@@ -131,7 +131,7 @@ namespace ToyBot.Controllers
 
         private Tweet GetSmartPost()
         {
-            db.Tweets.OrderBy(t => t.IntelligenceRating).First();
+            return db.Tweets.OrderBy(t => t.IntelligenceRating).First();
         }
 
         protected override void Dispose(bool disposing)
