@@ -57,7 +57,8 @@
             @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
     </tr>
-    <div id ="smartPost">
+}
+    <div id="smartPost">
         @Ajax.ActionLink("Click for most intelligent post!", "SmartPost",
         new AjaxOptions
         {
@@ -66,6 +67,5 @@
             HttpMethod = "Get"
         })
     </div>
-}
 
 </table>
