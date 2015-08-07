@@ -1,0 +1,8 @@
+﻿@model IEnumerable<ToyBot.Models.Tweet>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@item.Post</li>
+    }
+</ul>

@@ -134,6 +134,17 @@ namespace ToyBot.Controllers
             return db.Tweets.OrderBy(t => t.IntelligenceRating).First();
         }
 
+        public ActionResult _TweetSearch(string queryString)
+        {
+            var tweets = GetTweets(queryString);
+            return PartialView(tweets);
+        }
+
+        private List<Tweet> GetTweets(string queryString)
+        {
+            return db.Tweets.Where(t => t.Post.Contains(queryString)).ToList();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

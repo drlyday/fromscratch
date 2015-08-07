@@ -5,15 +5,30 @@
 }
 
 <h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-    @using (Html.BeginForm())
-    {
-        <p>Post: @Html.TextBox("SearchString") <br />
-            <input type="submit" value="Filter"/></p>
-    }
-</p>
+<div id="searchResults">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+        @*Standard Form HTML*@
+        @*@using (Html.BeginForm())
+            {
+                <p>Post: @Html.TextBox("SearchString") <br />
+                    <input type="submit" value="Filter"/></p>
+            }*@
+        <br>Ajax Form
+        @using (Ajax.BeginForm("_TweetSearch", "Tweets", new AjaxOptions()
+        {
+            InsertionMode = InsertionMode.InsertAfter,
+            HttpMethod = "Get",
+            LoadingElementId = "ajax-loader",
+            UpdateTargetId = "searchResults"
+        }))
+        {
+            <input type="text" name="queryString" />
+            <input type="submit" value="Find Post" />
+            <img id="ajax-loader" src="~/Content/Images/ajax-loader.gif" style="display: none" alt=""/>
+        }
+    </p>
+</div>
 <table class="table">
     <tr>
         <th>
